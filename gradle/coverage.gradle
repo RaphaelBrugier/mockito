@@ -1,6 +1,6 @@
 // apply plugin: 'cobertura'
 apply plugin: 'jacoco'
-apply plugin: 'coveralls'
+apply plugin: 'com.github.kt3k.coveralls'
 //cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
 //cobertura.coverageIgnoreTrivial = true
 jacocoTestReport {
