@@ -10,5 +10,3 @@ jacocoTestReport {
         html.enabled = true
     }
 }
-
-//coveralls.sourceDirs = ['src']  //workaround for https://github.com/stevesaliman/gradle-cobertura-plugin/issues/53
