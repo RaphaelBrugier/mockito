@@ -69,6 +69,10 @@ public class NoJUnitDependenciesTest {
     }
 
     private Class<?> hackToPossiblyIncludeCobertura() throws ClassNotFoundException {
-        return Class.forName("net.sourceforge.cobertura.coveragedata.TouchCollector");
+        try {
+            return Class.forName("net.sourceforge.cobertura.coveragedata.TouchCollector");
+        } catch (ClassNotFoundException ignored) {
+            return null;
+        }
     }
 }
