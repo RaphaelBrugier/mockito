@@ -4,14 +4,15 @@
  */
 package org.mockitousage.matchers;
 
-import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.*;
-
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.mockitousage.IMethods;
 import org.mockitoutil.TestBase;
+
+import static org.mockito.Matchers.*;
+import static org.mockito.Mockito.when;
 
 @SuppressWarnings("unchecked")
 public class AnyXMatchersAcceptNullsTest extends TestBase {
@@ -25,7 +26,7 @@ public class AnyXMatchersAcceptNullsTest extends TestBase {
 
     @Test
     public void shouldAnyXMatchersAcceptNull() {
-        when(mock.oneArg(anyObject())).thenReturn("0");
+        when(mock.oneArg(Matchers.<Boolean>anyObject())).thenReturn("0");
         when(mock.oneArg(anyString())).thenReturn("1");
         when(mock.forList(anyList())).thenReturn("2");
         when(mock.forMap(anyMap())).thenReturn("3");

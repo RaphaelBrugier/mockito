@@ -4,11 +4,11 @@
  */
 package org.mockito.internal.stubbing.answers;
 
-import org.mockito.Answers;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 /**
@@ -35,9 +35,23 @@ public class CallsRealMethods implements Answer<Object>, Serializable {
     private static final long serialVersionUID = 9057165148930624087L;
 
     public Object answer(InvocationOnMock invocation) throws Throwable {
-    	if (Modifier.isAbstract(invocation.getMethod().getModifiers())) {
-    		return Answers.RETURNS_DEFAULTS.get().answer(invocation);
-    	}
+        Method method = invocation.getMethod();
+        System.out.println("method : " + method);
+        boolean aDefault = method.isDefault();
+        System.out.println("default : " + aDefault);
+        boolean anAbstract = Modifier.isAbstract(method.getModifiers());
+        System.out.println("abstract : " + anAbstract);
+
+        boolean bridge = method.isBridge();
+        System.out.println("bridge:" + bridge);
+        Class<?> declaringClass = method.getDeclaringClass();
+        for (Class<?> aClass : declaringClass.getClasses()) {
+            System.out.println(aClass);
+        }
+
+//        if (Modifier.isAbstract(method.getModifiers())) {
+//    		return Answers.RETURNS_DEFAULTS.get().answer(invocation);
+//    	}
         return invocation.callRealMethod();
     }
 }

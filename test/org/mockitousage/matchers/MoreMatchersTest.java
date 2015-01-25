@@ -6,6 +6,7 @@
 package org.mockitousage.matchers;
 
 import org.junit.Test;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockitousage.IMethods;
 import org.mockitoutil.TestBase;
@@ -31,7 +32,7 @@ public class MoreMatchersTest extends TestBase {
     public void shouldAnyBeActualAliasToAnyObject() {
         mock.simpleMethod((Object) null);
 
-        verify(mock).simpleMethod(anyObject());
+        verify(mock).simpleMethod(Matchers.<String>anyObject());
         verify(mock).simpleMethod(any(Object.class));
     }
 
